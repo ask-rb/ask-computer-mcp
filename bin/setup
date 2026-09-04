@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+echo "==> Installing dependencies..."
+bundle install
+
+echo "==> Checking Cua Driver..."
+if command -v cua-driver >/dev/null 2>&1; then
+  echo "  cua-driver found: $(cua-driver --version 2>&1 | head -n 1)"
+else
+  echo "  Installing Cua Driver..."
+  /bin/bash -c "$(curl -fsSL https://cua.ai/driver/install.sh)"
+fi
+
+echo "==> Setup complete!"
+echo ""
+echo "Usage:"
+echo "  ask-computer-mcp                           # start the MCP server"
+echo "  ask-computer status                        # check driver status"
+echo "  ask-computer setup --channel nightly --with-history   # enable history"
+echo ""
+echo "ZCode config (add to ~/.zcode/cli/config.json):"
+echo '  "ask-computer-mcp": { "type": "stdio", "command": "ask-computer-mcp" }'
