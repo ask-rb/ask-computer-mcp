@@ -32,9 +32,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "ask-computer", ">= 0.1.0"
-  spec.add_dependency "ask-mcp", ">= 0.5.0"
+  spec.add_dependency "ask-mcp", ">= 0.6.1"
+  spec.add_dependency "ask-decisions", ">= 0.1.0"
 
   spec.add_development_dependency "minitest", "~> 5.25"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "mocha", "~> 3.1"
+  spec.add_development_dependency "webmock", "~> 3.18"
+  spec.add_development_dependency "vcr", "~> 6.0"
 end
